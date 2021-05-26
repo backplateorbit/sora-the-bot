@@ -1,0 +1,22 @@
+{
+  "name": "sora-the-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/backplateorbit/sora-the-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/backplateorbit/sora-the-bot/issues"
+  },
+  "homepage": "https://github.com/backplateorbit/sora-the-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  }
+}
