@@ -1,12 +1,12 @@
 const Discord = require("discord.js")
-import { ApiClient } from "twitch"
-import { ClientCredentialsAuthProvider } from "twitch-auth"
+const twitch = require("twitch")
+const twitchAuth = require("twitch-auth")
 
 const client = new Discord.Client()
-const authProvider = new ClientCredentialsAuthProvider(
+const authProvider = new twitchAuth.ClientCredentialsAuthProvider(
     process.env.TWITCH_CLIENT_ID, process.env.TWITCH_CLIENT_SERVER
 )
-const apiClient = new ApiClient({authProvider})
+const apiClient = new twitch.ApiClient({authProvider})
 
 const clipChannel = await client.guilds.fetch(process.env.MATT_SERVER_ID)
 
