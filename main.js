@@ -19,7 +19,7 @@ client.on("ready", async() => {
         (channel) => channel.id === process.env.MATT_CLIP_CHANNEL_ID
     )
 
-    const clipChannelMessages = await clipChannel.messages.fetch({limit: 0})
+    const clipChannelMessages = await clipChannel.messages.cache.fetch({limit: 0})
     console.log(clipChannelMessages)
 });
 
