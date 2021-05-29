@@ -88,9 +88,13 @@ const checkMattStreaming = async (server) => {
         lastMessage => {
             console.log(lastMessage)
             if (!stream) {
-                lastMessage.edit(createOfflineEmbed())
+                lastMessage.edit("", createOfflineEmbed())
             } else {
-                lastMessage.edit("@here", createLiveEmbed(stream))
+                lastMessage.edit(
+                    lastMessage.embeds[0].title.startsWith(":black_circle")
+                    ? "@everyone" : "", 
+                    createLiveEmbed(stream)
+                )
             }
         }
     )
@@ -98,9 +102,9 @@ const checkMattStreaming = async (server) => {
 
 client.on("ready", async () => {
     const server = await client.guilds.fetch(process.env.MATT_SERVER_ID)
-    await checkMattStreaming(server)
     // Set up clip fetcher.
     setInterval(async () => await fetchNewClips(server), 600000)
+    setInterval(async() => await checkMattStreaming(server), 5000)
 });
 
 // Move users who join the server to the right permission role.
