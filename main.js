@@ -41,4 +41,11 @@ client.on("ready", async() => {
     setInterval(async() => await fetchNewClips(server), 600000)
 });
 
+// Move users who join the server to the right permission role.
+client.on("guildMemberAdd", async(member) => {
+    const server = await client.guilds.fetch(process.env.MATT_SERVER_ID)
+    member.roles.add(server.roles.fetch("846675430408060938"))
+    console.log(`New member ${member.displayName} added to The Beys.`)
+})
+
 client.login(process.env.BOT_KEY)
