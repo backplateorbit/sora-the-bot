@@ -37,30 +37,30 @@ const fetchNewClips = async(server) => {
 }
 
 // Check Matt Streaming
-const checkMattStreaming = async(server) => {
-    // Get Matt's stream.
-    const stream = await apiClient.helix.streams.getStreamByUserName(process.env.MATT_TWITCH_USERNAME)
+// const checkMattStreaming = async(server) => {
+//     // Get Matt's stream.
+//     const stream = await apiClient.helix.streams.getStreamByUserName(process.env.MATT_TWITCH_USERNAME)
 
-    if (!stream) {
-        // Matt isn't streaming, no point doing anything else...
-        return
-    }
+//     if (!stream) {
+//         // Matt isn't streaming, no point doing anything else...
+//         return
+//     }
 
-    const streamStatusChannel = await server.channels.cache.get(process.env.MATT_STREAM_STATUS_CHANNEL_ID)
+//     const streamStatusChannel = await server.channels.cache.get(process.env.MATT_STREAM_STATUS_CHANNEL_ID)
 
-    // Get the most recent message in the Status Channel.
-    const streamStatusChannelMessage = await streamStatusChannel.messages.fetch({limit: 1})
+//     // Get the most recent message in the Status Channel.
+//     const streamStatusChannelMessage = await streamStatusChannel.messages.fetch({limit: 1})
 
-    // We need to do a check to see if we've already announced this stream.
-    // If we have, we need to edit the message with any new stuff as an Embed.
+//     // We need to do a check to see if we've already announced this stream.
+//     // If we have, we need to edit the message with any new stuff as an Embed.
     
-    // Grab the message embed.
-    const streamStatusEmbed = streamStatusChannelMessage.embeds[0]
-    const streamStatusStreamId = streamStatusEmbed.fields.find((embedField) => embedField.name === "id").value
+//     // Grab the message embed.
+//     const streamStatusEmbed = streamStatusChannelMessage.embeds[0]
+//     const streamStatusStreamId = streamStatusEmbed.fields.find((embedField) => embedField.name === "id").value
 
-    if (stream.id === streamStatusStreamId) {
-        // We have already announced the stream. We just need to update the Embed.
-    }
+//     if (stream.id === streamStatusStreamId) {
+//         // We have already announced the stream. We just need to update the Embed.
+//     }
 
 
 
