@@ -82,7 +82,7 @@ const createOfflineEmbed = () => {
 
 // Check if Matt streaming.
 const checkMattStreaming = async (server) => {
-    const stream = await apiClient.helix.streams.getStreamByUserName("HasanAbi")
+    const stream = await apiClient.helix.streams.getStreamByUserName(process.env.MATT_TWITCH_USERNAME)
     const streamStatusChannel = await server.channels.cache.get(process.env.MATT_STREAM_STATUS_CHANNEL_ID)
     streamStatusChannel.messages.fetch(streamStatusChannel.lastMessageID).then(
         lastMessage => {
@@ -90,7 +90,7 @@ const checkMattStreaming = async (server) => {
             if (!stream) {
                 lastMessage.edit(createOfflineEmbed())
             } else {
-                lastMessage.edit(createLiveEmbed(stream))
+                lastMessage.edit("@here", createLiveEmbed(stream))
             }
         }
     )
@@ -98,7 +98,6 @@ const checkMattStreaming = async (server) => {
 
 client.on("ready", async () => {
     const server = await client.guilds.fetch(process.env.MATT_SERVER_ID)
-    server.channels.cache.get(process.env.MATT_STREAM_STATUS_CHANNEL_ID).send("X_X_X_X")
     await checkMattStreaming(server)
     // Set up clip fetcher.
     setInterval(async () => await fetchNewClips(server), 600000)
