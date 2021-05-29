@@ -82,7 +82,7 @@ const createOfflineEmbed = () => {
 
 // Check if Matt streaming.
 const checkMattStreaming = async (server) => {
-    const stream = await apiClient.helix.streams.getStreamByUserName(process.env.MATT_TWITCH_USERNAME)
+    const stream = await apiClient.helix.streams.getStreamByUserName("HasanAbi")
     const streamStatusChannel = await server.channels.cache.get(process.env.MATT_STREAM_STATUS_CHANNEL_ID)
     streamStatusChannel.messages.fetch(streamStatusChannel.lastMessageID).then(
         lastMessage => {
