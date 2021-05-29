@@ -91,7 +91,7 @@ const checkMattStreaming = async (server) => {
                 lastMessage.edit("", createOfflineEmbed())
             } else {
                 lastMessage.edit(
-                    lastMessage.embeds[0].title.startsWith(":black_circle")
+                    lastMessage.embeds[0].title.startsWith(":black_circle") || lastMessage.content === ""
                     ? "@everyone" : "", 
                     createLiveEmbed(stream)
                 )
