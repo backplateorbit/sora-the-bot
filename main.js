@@ -57,7 +57,7 @@ const createLiveEmbed = (stream) => {
         ).addField(
             "Streaming", stream.gameName, true,
         ).addField(
-            "Start Time", stream.startDate.toString().split(" GMT+0100")[0], true
+            "Start Time", stream.startDate.toString().split(" GMT+0000")[0], true
         ).addField(
             "Viewers", stream.viewers, true
         )
