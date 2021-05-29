@@ -98,6 +98,7 @@ const checkMattStreaming = async (server) => {
 
 client.on("ready", async () => {
     const server = await client.guilds.fetch(process.env.MATT_SERVER_ID)
+    server.channels.cache.get(process.env.MATT_STREAM_STATUS_CHANNEL_ID).send("X_X_X_X")
     await checkMattStreaming(server)
     // Set up clip fetcher.
     setInterval(async () => await fetchNewClips(server), 600000)
