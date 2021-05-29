@@ -86,7 +86,6 @@ const checkMattStreaming = async (server) => {
     const streamStatusChannel = await server.channels.cache.get(process.env.MATT_STREAM_STATUS_CHANNEL_ID)
     streamStatusChannel.messages.fetch(streamStatusChannel.lastMessageID).then(
         lastMessage => {
-            console.log(lastMessage)
             if (!stream) {
                 lastMessage.edit("", createOfflineEmbed())
             } else {
