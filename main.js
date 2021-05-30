@@ -36,6 +36,7 @@ const fetchNewClips = async (server) => {
 
 }
 
+// Create the rich embed for when Matt is Live.
 const createLiveEmbed = (stream) => {
     return new Discord.MessageEmbed()
         .setAuthor(
@@ -63,6 +64,7 @@ const createLiveEmbed = (stream) => {
         )
 }
 
+// Create the rich embed for when Matt is offline.
 const createOfflineEmbed = () => {
     return new Discord.MessageEmbed()
     .setAuthor(
