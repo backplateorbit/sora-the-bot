@@ -89,7 +89,6 @@ const checkMattStreaming = async (server) => {
         lastMessage => {
             if (!stream) {
                 lastMessage.edit("", createOfflineEmbed())
-                streamStatusChannel.setName("⚫stream-status⚫")
             } else {
                 lastMessage.edit(
                     lastMessage.embeds[0].title.startsWith(":black_circle") || lastMessage.content === ""
@@ -97,7 +96,6 @@ const checkMattStreaming = async (server) => {
                     createLiveEmbed(stream)
                     
                 )
-                streamStatusChannel.setName("🔴stream-status🔴")
             }
         }
     )
