@@ -89,12 +89,15 @@ const checkMattStreaming = async (server) => {
         lastMessage => {
             if (!stream) {
                 lastMessage.edit("", createOfflineEmbed())
+                streamStatusChannel.setName(":black_circle:stream-status:black_circle:")
             } else {
                 lastMessage.edit(
                     lastMessage.embeds[0].title.startsWith(":black_circle") || lastMessage.content === ""
                     ? "@everyone" : "", 
                     createLiveEmbed(stream)
+                    
                 )
+                streamStatusChannel.setName(":red_circle:stream-status:red_circle:")
             }
         }
     )
